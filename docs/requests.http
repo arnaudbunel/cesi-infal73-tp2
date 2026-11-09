@@ -1,0 +1,35 @@
+@host = http://127.0.0.1:3000
+
+### Lister
+GET {{host}}/api/orders
+
+### Lire
+GET {{host}}/api/orders/ORD-101
+
+### Créer
+POST {{host}}/api/orders
+Content-Type: application/json
+Idempotency-Key: demo-001
+
+{"customerId":"C102","items":[{"productId":"P12","quantity":2}]}
+
+### Confirmer
+PATCH {{host}}/api/orders/ORD-101
+Content-Type: application/json
+
+{"status":"CONFIRMED"}
+
+### Annuler
+POST {{host}}/api/orders/ORD-102/cancellations
+
+### Disponibilité
+GET {{host}}/api/orders/ORD-102/availability
+
+### Diagnostic bloquant
+GET {{host}}/api/diagnostics/blocking
+
+### Diagnostic non bloquant
+GET {{host}}/api/diagnostics/nonblocking
+
+### Stocks direct
+GET http://127.0.0.1:3001/stock/P12

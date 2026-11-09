@@ -1,0 +1,26 @@
+{
+  "name": "infal73-tp2",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TP INFAL73 - Partie 3 : communication REST non bloquante et analyse des performances",
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "workspaces": ["apps/order-service", "apps/stock-service"],
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:orders": "npm run dev -w apps/order-service",
+    "dev:stocks": "npm run dev -w apps/stock-service",
+    "reset": "node scripts/reset.mjs",
+    "summarize": "node scripts/summarize-autocannon.mjs",
+    "build": "npm run build --workspaces",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test \"tests/smoke/*.test.ts\"",
+    "test:acceptance": "tsx --test \"tests/acceptance/*.test.ts\""
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "autocannon": "^8.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "~5.9.3"
+  }
+}
